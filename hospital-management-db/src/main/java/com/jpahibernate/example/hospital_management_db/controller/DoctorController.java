@@ -33,4 +33,28 @@ public class DoctorController {
          return doctor;
     }
 
+    @GetMapping("/count")
+    public String countDoctors(){
+        String response = doctorService.countDoctors();
+        return response;
+    }
+
+    @DeleteMapping("/deleteById/{id}")
+    public String deleteDoctorById(@PathVariable int id){
+        String response = doctorService.deleteDoctorById(id);
+        return response;
+    }
+
+    @PutMapping("/updatePut/{id}")
+    public String updateDoctorUsingPut(@PathVariable int id,@RequestBody Doctor newDoctorRequest){
+        String response = doctorService.updateDoctorUsingPut(id,newDoctorRequest);
+        return response;
+    }
+    //@RequestParam - it takes the input in the form of parameter query
+    @PatchMapping("/updatePatch/{id}")
+    public String updateDoctorUsingPatch(@PathVariable int id,@RequestParam String newEmail,@RequestParam String newMobile){
+        String response = doctorService.updateDoctorUsingPatch(id,newEmail,newMobile);
+        return response;
+    }
+
 }
